@@ -18,6 +18,6 @@ module.exports = {
     uri:    process.env.MONGOLAB_URI ||
             process.env.MONGOHQ_URL ||
             process.env.OPENSHIFT_MONGODB_DB_URL+process.env.OPENSHIFT_APP_NAME ||
-            'mongodb://localhost/booktradingclub'
+            'mongodb://meanuser:meanpass@ds037244.mongolab.com:37244/heroku_rmlfs694'
   }
 };
