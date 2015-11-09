@@ -71,6 +71,7 @@ angular.module('bookTradingClubApp')
           }.bind(this)).$promise;
       },
 
+
       /**
        * Change password
        *

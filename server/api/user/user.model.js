@@ -5,7 +5,20 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
 var UserSchema = new Schema({
+  username: String,
   name: String,
+  gender: String,
+  country: String,
+  state: String,
+  city: String,
+  books: String,
+  date: String,
+  profileimage: String,
+  favgenre: String,
+  favauthor: String,
+  favbook: String,
+  favseries: String,
+  desc: String,
   email: { type: String, lowercase: true },
   role: {
     type: String,

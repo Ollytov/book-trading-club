@@ -10,7 +10,9 @@ angular.module('bookTradingClubApp')
 
       if(form.$valid) {
         Auth.createUser({
+          username: $scope.user.username,
           name: $scope.user.name,
+          country: $scope.user.selectedCountry,
           email: $scope.user.email,
           password: $scope.user.password
         })

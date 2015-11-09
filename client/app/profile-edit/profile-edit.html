@@ -1,0 +1,46 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="row profile-wrap col-md-12 col-lg-12">
+		<div class="profile-name-pic text-center col-xs-12 col-sm-5 col-md-4 col-md-offset-0 col-lg-3 col-lg-offset-0">
+			<img class="profile-image" src="{{getCurrentUser().profileimage}}">
+			<hr>
+			<h1 class="profile-username">{{ getCurrentUser().username }}</h1>
+			<hr>
+			<p><i class="glyphicon glyphicon-calendar"></i> Joined On {{getCurrentUser().date}}</p>
+		</div>
+		<div class="profile-information col-xs-12 col-sm-7 col-md-8 col-lg-9 col-lg-offset-0">
+			<h2 class="profile-desc text-center">Profile Information</h2>
+			<hr>
+			<form class="form" name="form" ng-submit="register(form)" novalidate>
+				<div class="profile-personal col-md-6 col-lg-6">
+					<p class="profile-name"><strong>Name:</strong> 
+						{{getCurrentUser().name}}
+					</p>
+					<p class="profile-email"><strong>Email:</strong> 
+						{{getCurrentUser().email}}
+					</p>
+					<p class="profile-country"><strong>Country:</strong> 
+						<select class="country-pick col-xs-12 col-sm-12 col-md-12" name="country" ng-model="user.country" pvp-country-picker="name" required></select>
+					</p>
+					<p class="profile-state"><strong>State:</strong> 
+						<input type="text" name="state" class="form-control" ng-model="user.state" value="{{getCurrentUser().state}}"/>
+					</p>
+					<p class="profile-city"><strong>City:</strong> 
+						<input type="text" name="city" class="form-control" ng-model="user.city" value="{{getCurrentUser().city}}"/>
+					</p>
+				</div>
+				<div class="profile-books col-md-6 col-lg-6">
+					<p class="profile-genre"><strong>Favorite Genre:</strong> {{getCurrentUser().favgenre}}</p>
+					<p class="profile-author"><strong>Favorite Author:</strong> {{getCurrentUser().favauthor}}</p>
+					<p class="profile-book"><strong>Favorite Book:</strong> {{getCurrentUser().favbook}}</p>
+					<p class="profile-series"><strong>Favorite Series:</strong> {{getCurrentUser().favseries}}</p>
+					<input type="submit" class="profile-edit btn btn-default" value="Save Changes">
+				</div>
+			</form>
+		</div>
+		<div class="favorite-books col-sm-12 col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
+				<h2>Favorite Books:</h2>
+		</div>
+	</div>
+</div>

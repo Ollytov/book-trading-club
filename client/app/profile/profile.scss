@@ -1,0 +1,32 @@
+.profile-wrap {
+	.profile-name-pic {
+		.profile-image {
+			height: 254px;
+			width: 247.5px;
+			border: 2px solid black;
+		}
+		.profile-username {
+			font-size: 30px;
+			margin-top: 5px;
+		}
+	}
+	.profile-information {
+		font-size: 19px;
+		@media screen and (max-width: 1200px) {
+	        font-size: 14px;
+	    }
+		.profile-desc {
+			font-size: 38px;
+			.glyphicon-pencil {
+				font-size: 20px;
+			}
+		}
+		.profile-personal {
+			border-right: 1px solid #eeeeee;
+		}
+		.favorite-books {
+			border: 2px solid black;
+			height: 300px;
+		}
+	}
+}

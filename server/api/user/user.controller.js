@@ -4,6 +4,7 @@ var User = require('./user.model');
 var passport = require('passport');
 var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
+var moment = require('moment');
 
 var validationError = function(res, err) {
   return res.status(422).json(err);
@@ -24,7 +25,19 @@ exports.index = function(req, res) {
  * Creates a new user
  */
 exports.create = function (req, res, next) {
+  console.log(req.body);
   var newUser = new User(req.body);
+
+  newUser.date = moment(Date.now()).format('MMMM Do YYYY');
+  newUser.state = '';
+  newUser.city = '';
+  newUser.books = [];
+  newUser.favgenre = '';
+  newUser.favauthor = '';
+  newUser.favbook = '';
+  newUser.favseries = '';
+  newUser.desc = '';
+  newUser.profileimage = 'assets/images/default-profile-image.png';
   newUser.provider = 'local';
   newUser.role = 'user';
   newUser.save(function(err, user) {
@@ -57,6 +70,30 @@ exports.destroy = function(req, res) {
     return res.status(204).send('No Content');
   });
 };
+
+
+/**
+ * Change a users information
+ */
+exports.changeInformation = function(req, res, next) {
+  var userId = req.user._id;
+  User.findById(userId, function (err, user) {
+    user.favgenre = req.body.favgenre;
+    user.favauthor = req.body.favauthor;
+    user.favbook = req.body.favbook;
+    user.favseries = req.body.favseries;
+    user.email = req.body.email;
+    user.name = req.body.name;
+    user.country = req.body.country;
+    user.state = req.body.state;
+    user.city = req.body.city;
+    user.save(function(err) {
+      if (err) return validationError(res, err);
+      res.status(200).send('OK');
+    });
+  });
+};
+
 
 /**
  * Change a users password

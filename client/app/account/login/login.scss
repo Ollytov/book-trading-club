@@ -1,5 +1,28 @@
-// Colors
-// --------------------------------------------------
+.signup-wrap {
+	border: 2px solid black;
+	padding: 30px;
+	.country-pick {
+		height: 34px;
+		margin-bottom: 8px;
+	}
+	.login-text {
+		margin-top: 10px;
+		margin-bottom: -5px;
+	}
+	select {
+		border-radius: 4px;
+	}
+	.has-error select {
+		border-color: #a94442;
+		box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	}
+}
 
-$btnText:                           #fff;
-$btnTextAlt:                        #000;
+.login-wrap {
+	border: 2px solid black;
+	padding: 30px;
+	.signup-text {
+		margin-top: 10px;
+		margin-bottom: -5px;
+	}
+}
