@@ -1,0 +1,20 @@
+.search-wrap {
+	.search-head {
+		h1 {
+			font-size: 40px;
+		}
+		p {
+			font-size: 18px;
+		}
+	}
+	.book-list {
+		.main-book-wrap {
+			height: 275px;
+			img {
+				width: 130px;
+				height: 220px;
+				border: 2px solid black;
+			}	
+		}
+	}
+}

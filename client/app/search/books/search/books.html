@@ -1,0 +1,18 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="search-wrap row col-md-12">
+		<div class="search-head text-center">
+			<h1>View our collection of books!</h1>
+			<p>Click on any of the books to view comments, ratings, and learn more!</p>
+			<p>If you want to add your own book to this collection, visit the <a href="/addbook">Add Book</a> page!</p>
+		</div>
+		<div class="book-list text-center">
+			<div class="col-md-2" ng-repeat="book in books">
+				<div class="main-book-wrap">
+					<img ng-src="{{ book.book[0].thumbnail }}" alt="Image of {{ book.book[0].title }}">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

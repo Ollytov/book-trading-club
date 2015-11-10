@@ -6,9 +6,35 @@ var config = require('../../config/environment');
 var jwt = require('jsonwebtoken');
 var moment = require('moment');
 
+var books = require('google-books-search');
+
 var validationError = function(res, err) {
   return res.status(422).json(err);
 };
+
+
+
+
+exports.searchbooks = function(req, res) {
+  books.search(req.params.name, function(error, results) {
+    if ( ! error ) {
+        res.status(200).json(results);
+    } else {
+        console.log(error);
+    }
+});
+};
+
+
+exports.addbook = function(req, res, next) {
+  console.log(req.body);
+  console.log(req.params.id);
+  User.findByIdAndUpdate(req.params.id, {$push: {books: req.body}}, function(err, data) {
+      if (err) return res.status(500).send(err);
+      res.status(200).send("Ok");
+  });
+}
+
 
 /**
  * Get list of users
@@ -78,15 +104,27 @@ exports.destroy = function(req, res) {
 exports.changeInformation = function(req, res, next) {
   var userId = req.user._id;
   User.findById(userId, function (err, user) {
-    user.favgenre = req.body.favgenre;
-    user.favauthor = req.body.favauthor;
-    user.favbook = req.body.favbook;
-    user.favseries = req.body.favseries;
-    user.email = req.body.email;
-    user.name = req.body.name;
-    user.country = req.body.country;
-    user.state = req.body.state;
-    user.city = req.body.city;
+    if (req.body.favgenre) {
+      user.favgenre = req.body.favgenre.$viewValue;
+    }
+    if (req.body.favauthor) {
+      user.favauthor = req.body.favauthor.$viewValue;
+    }
+    if (req.body.favbook) {
+      user.favbook = req.body.favbook.$viewValue;
+    }
+    if (req.body.favseries) {
+      user.favseries = req.body.favseries.$viewValue;
+    }
+    if (req.body.country) {
+      user.country = req.body.country.$viewValue;
+    }
+    if (req.body.state) {
+      user.state = req.body.state.$viewValue;
+    }
+    if (req.body.city) {
+      user.city = req.body.city.$viewValue;
+    }
     user.save(function(err) {
       if (err) return validationError(res, err);
       res.status(200).send('OK');

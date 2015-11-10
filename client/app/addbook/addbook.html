@@ -1,0 +1,32 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+	<div class="addbook row col-md-12">
+		<div class="addbook-head text-center">
+			<img src="assets/images/owl-medium.png" alt="Owl Holding Book">
+			<h1>Add Your Favorite Books to Our Library!</h1>
+			<p>Type the title of a book into the search bar below, and we will try to find the exact book you are looking for!</p>
+		</div>
+		<div class="addbook-search col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			<form name="form" ng-submit="searchBooks(bookname)" novalidate>
+				<div class="input-group">
+			      <input type="text" ng-model="bookname" class="form-control searchbooks" placeholder="Search for...">
+			      <span class="input-group-btn">
+			        <input type="submit" class="btn btn-default searchbooks-button" value="Go!">
+			      </span>
+			    </div>
+			</form>
+		</div>
+		<div ng-show="isActive" class="book-accept col-md-8 col-md-offset-2 text-center">
+			<h1>Is this the book that you were searching for?</h1>
+			<div class="book-wrap text-center">
+				<img ng-src="{{search_bookimg}}" alt="Image of {{ search_bookname }}">
+				<p class="searched-name">{{ search_bookname }}</p>
+				<p class="searched-author">By: {{ search_bookauthor}}</p>
+				<button class="btn btn-default" ng-click="addBook()">Add Book!</button>
+				<button class="btn btn-default" ng-click="keepLooking()">Keep Looking...</button>
+				<p class="alert alert-danger" ng-show="errorMessageTrue">{{errorMessage}}</p>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('bookTradingClubApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, Auth) {
+    $scope.isLoggedIn = Auth.isLoggedIn;
+    
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {

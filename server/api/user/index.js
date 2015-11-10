@@ -14,5 +14,7 @@ router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
 router.get('/:id', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 router.post('/profile-edit', auth.isAuthenticated(), controller.changeInformation);
+router.post('/addbook/:id', auth.isAuthenticated(), controller.addbook);
+router.get('/search/:name', controller.searchbooks)
 
 module.exports = router;

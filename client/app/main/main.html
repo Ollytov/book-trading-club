@@ -7,8 +7,9 @@
       <h3>Add and discuss your favorite books with other members!</h3>
       <h3>Search now or Sign up for free!</h3>
       <div class="head-btn-wrap">
-        <a class="btn btn-default">Search Now</a>
-        <a class="btn btn-default" href="/signup">Sign up</a>
+        <a class="btn btn-default" href="/search/books">Search Now</a>
+        <a class="btn btn-default" ng-hide="isLoggedIn()" href="/signup">Sign up</a>
+        <a class="btn btn-default" ng-show="isLoggedIn()" href="/profile">View Profile</a>
       </div>
     </div>
     <div class="head-img col-md-5 col-lg-4 hidden-sm hidden-xs">
@@ -26,7 +27,7 @@
               <i class="glyphicon glyphicon-search"></i>
             </div>
             <p>Search through all of the books that have been added to our website for free!!</p>
-            <a class="btn btn-default">Search Now</a>
+            <a class="btn btn-default" href="/search/books">Search Now</a>
           </div>
         </div>
         <div class="feature-box col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-0 col-lg-4 col-lg-offset-0 text-center">
@@ -35,7 +36,7 @@
               <i class="glyphicon glyphicon-comment"></i>
             </div>
             <p>Leave a comment or add your own books to our list! Share with your friends your favorite books!</p>
-            <a class="btn btn-default">Add Books</a>
+            <a class="btn btn-default" href="/addbook">Add Books</a>
           </div>
         </div>
         <div class="feature-box col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-0 text-center">
