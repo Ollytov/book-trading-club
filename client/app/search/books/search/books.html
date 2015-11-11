@@ -8,9 +8,11 @@
 			<p>If you want to add your own book to this collection, visit the <a href="/addbook">Add Book</a> page!</p>
 		</div>
 		<div class="book-list text-center">
-			<div class="col-md-2" ng-repeat="book in books">
+			<div class="col-xs-6 col-sm-3 col-md-2" ng-repeat="book in books">
 				<div class="main-book-wrap">
-					<img ng-src="{{ book.book[0].thumbnail }}" alt="Image of {{ book.book[0].title }}">
+					<a href="search/books/overview/{{book._id}}" ng-click="getInfo(book)">
+						<img ng-src="{{ book.book[0].thumbnail }}" alt="Image of {{ book.book[0].title }}">
+					</a>
 				</div>
 			</div>
 		</div>

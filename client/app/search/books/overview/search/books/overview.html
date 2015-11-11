@@ -1,0 +1,45 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container overview-main-wrap">
+	<div class="overview-wrap row col-md-12">
+		<div class="overview-head text-center">
+			<h1>{{responseBook.title}}!</h1>
+			<p>Feel free to leave a comment about the book, or give it a rating!</p>
+			<p class="alert alert-success" ng-show="successMessage">{{success}}</p>
+			<p class="alert alert-danger" ng-show="errorMessage">{{error}}</p>
+		</div>
+		<div class="overview-main text-center col-xs-12 col-sm-5 col-md-4 col-md-offset-0 col-lg-3 col-lg-offset-0">
+			<img class="book-image" ng-src="{{responseBook.thumbnail}}">
+			<hr>
+			<p class="book-author"><strong>Author:</strong> {{ responseBook.authors[0] }}</p>
+			<p> <strong>Categories:</strong>
+				<span class="book-tags" ng-repeat="tag in responseBook.categories">&#32;{{tag}},</span>
+			</p>
+			<p class="book-author"><strong>Published On:</strong> {{ responseBook.publishedDate }}</p>
+			<p class="book-user"><strong>Added By:</strong> <a href="/search/users/{{responseBook.addedBy}}">{{ responseBook.addedBy}}</a></p>
+			<p><a class="btn btn-default" ng-hide="matchingFavs" ng-click="addFavorites()">Add To Favorites</a></p>
+			<p><a class="btn btn-default" ng-show="matchingFavs" ng-click="removeFavorites()">Remove From Favorites</a></p>
+			<p><a class="btn btn-default" href="{{responseBook.link}}">Learn More</a></p>
+			<p><a class="btn btn-default" ng-show="addedBy" ng-click="deleteBook(responseBook)">Delete Book</a></p>
+		</div>
+
+		<div class="overview-comments col-xs-12 col-sm-7 col-md-8 col-lg-9 col-lg-offset-0">
+			<div class="comments-wrap col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2" ng-repeat="comment in commentList">
+				<img ng-src="{{comment.profileImg}}" class="comment-image col-xs-2 col-sm-2 col-md-2">
+				<div class="comment-text text-center">
+					<p class="comment-name"><strong>Posted By:</strong> {{comment.userName}},&#32;{{comment.timePosted}}</p>
+					<p class="comment-comment">{{comment.commentText}}</p>
+				</div>
+				<button ng-show="yourComment(comment.userName)" class="delete-comment btn btn-default" ng-click="deleteComment(comment.commentText)">Delete</button>
+			</div>
+			<div class="leave-comment col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
+				<form ng-submit="addComment()">
+					<label for="maintext">Add Your Own Comment:</label>
+					<textarea class="form-control" name="maintext" ng-model="maintext" rows="3" maxlength="90"></textarea>
+					<input type="submit" class="btn btn-default comment-btn" value="Add Comment">
+				</form>
+			</div>
+		</div>
+
+	</div>
+</div>

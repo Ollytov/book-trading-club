@@ -27,11 +27,52 @@ exports.searchbooks = function(req, res) {
 
 
 exports.addbook = function(req, res, next) {
-  console.log(req.body);
-  console.log(req.params.id);
-  User.findByIdAndUpdate(req.params.id, {$push: {books: req.body}}, function(err, data) {
-      if (err) return res.status(500).send(err);
-      res.status(200).send("Ok");
+  console.log("Starting Test");
+  User.findById(req.params.id, function(err, user) {
+    if (user.books.length !== 0) {
+      console.log(user.books[0].book);
+      for (var i = 0; i < user.books.length; i++) {
+        console.log(i);
+        console.log(user.books[i].book[0].thumbnail);
+        console.log(req.body.book[0].thumbnail);
+        if (user.books[i].book[0].thumbnail === req.body.book[0].thumbnail) {
+            return res.status(500).send('That book has already been added!');
+        }
+      }
+    }
+    console.log("Passed Test...");
+    User.findByIdAndUpdate(req.params.id, {$push: {books: req.body}}, function(err, data) {
+        if (err) return res.status(500).send(err);
+        res.status(200).send("Ok");
+    });
+  });
+}
+
+exports.findUser = function(req, res) {
+  User.findOne({
+    username: req.params.name
+  }, function(err, user) {
+    if (err) return res.status(500).send(err);
+    res.json(user);
+  });
+}
+
+exports.getFavorites = function(req, res) {
+  User.findById(req.params.id, function(err, user) {
+    if (err) return res.status(500).send(err);
+    res.status(200).send(user.books);
+  })
+}
+
+
+exports.removefavorite = function(req, res, next) {
+  console.log("removing favorite...");
+  console.log(req.params.bookid);
+  console.log(req.params.userid);
+  User.findByIdAndUpdate(req.params.userid, {$pull : {books : { _id : req.params.bookid }}}, function(err, data) {
+    console.log("Working...");
+    if (err) return res.status(500).send(err);
+    res.status(200).send("Ok");
   });
 }
 
@@ -52,6 +93,7 @@ exports.index = function(req, res) {
  */
 exports.create = function (req, res, next) {
   console.log(req.body);
+  req.body.username = req.body.username.toLowerCase();
   var newUser = new User(req.body);
 
   newUser.date = moment(Date.now()).format('MMMM Do YYYY');
@@ -81,8 +123,8 @@ exports.show = function (req, res, next) {
 
   User.findById(userId, function (err, user) {
     if (err) return next(err);
-    if (!user) return res.status(401).send('Unauthorized');
-    res.json(user.profile);
+    //if (!user) return res.status(401).send('Unauthorized');
+    res.json(user);
   });
 };
 

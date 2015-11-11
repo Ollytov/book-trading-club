@@ -1,4 +1,8 @@
 .addbook {
+	background: $panel;
+	padding: 50px;
+	border: 2px solid black;
+	border-radius: 20px;
 	.addbook-head {
 		img {
 			height: 300px;

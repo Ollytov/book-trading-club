@@ -1,0 +1,75 @@
+.overview-main-wrap {
+	background: $panel;
+	border: 2px solid black;
+	padding: 30px;
+	border-radius: 20px;
+}
+
+.overview-head h1 {
+	font-size: 40px;
+}
+
+.overview-main {
+	margin-top: 20px;
+	.book-image {
+		border: 2px solid black;
+		width: 130px;
+		height: 220px;
+	}
+}
+
+.comments-wrap {
+	height: 120px;
+	margin-top: 30px;
+	border: 2px solid black;
+	border-radius: 20px;
+	background: white;
+	.comment-image {
+		padding: 0;
+		width: 70px;
+		height: 70px;
+		border: 2px solid black;
+		margin-top: 25px;
+		border-radius: 20px;
+		@media screen and (max-width: 1000px) {
+			width: 50px;
+			height: 50px;
+		}
+	}
+	.comment-name {
+		font-size: 16px;
+		margin-top: 5px;
+		@media screen and (max-width: 1000px) {
+			font-size: 14px;
+		}
+		@media screen and (max-width: 600px) {
+			font-size: 12px;
+		}
+	}
+	.comment-comment {
+		font-size: 15px;
+		margin-left: 5px;
+		@media screen and (max-width: 1000px) {
+			font-size: 13px;
+		}
+	}
+}
+
+.comment-btn {
+	margin-top: 10px;
+	border: 1px solid black;
+	&:hover {
+		border: 1px solid black;
+	}
+}
+
+.leave-comment {
+	margin-top: 40px;
+}
+
+.delete-comment {
+	height: 25px;
+	padding: 2px;
+	margin-top: 24px;
+	margin-left: -57px;
+}

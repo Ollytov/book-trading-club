@@ -8,6 +8,27 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
  * App-wide Styles
  */
 
+ $background: #332C2C;
+ $panel: #F7EFD2;
+
+ body {
+ 	background: $background;
+ 	font-family: Georgia;
+ }
+
+body > div > div:nth-child(1) > div {
+	background: $panel;
+	border: 2px solid black;
+	border-top: 0;
+}
+
+.btn-default {
+	border: 2px solid black;
+}
+
+.btn-default:hover {
+	border: 2px solid black;
+}
 
 // Component styles are injected through grunt
 // injector
@@ -17,6 +38,8 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'main/main.scss';
 @import 'profile-edit/profile-edit.scss';
 @import 'profile/profile.scss';
+@import 'search/books/overview/search/books/overview.scss';
 @import 'search/books/search/books.scss';
+@import 'search/users/search/users.scss';
 @import 'modal/modal.scss';
 // endinjector

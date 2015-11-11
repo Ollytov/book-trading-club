@@ -1,0 +1,54 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container user-search-wrap">
+	<div class="row col-md-12 col-lg-12">
+		<h1 class="text-center">Search for a user below!</h1>
+		<div class="profile-search col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
+			<form name="form" ng-submit="searchUsers(username)" novalidate>
+				<div class="input-group">
+			        <input type="text" ng-model="username" class="form-control searchusers" placeholder="Search for...">
+			        <span class="input-group-btn">
+			            <input type="submit" class="btn btn-default searchusers-button" value="Go!">
+			        </span>
+			    </div>
+			    <p class="alert alert-danger" ng-hide="realuser">{{errorMessage}}</p>
+			</form>
+		</div>
+	</div>
+	<div ng-show="searched" class="row profile-wrap col-md-12 col-lg-12">
+		<div class="profile-name-pic text-center col-xs-12 col-sm-5 col-md-4 col-md-offset-0 col-lg-3 col-lg-offset-0">
+			<img class="profile-image" ng-src="{{finduser.profileimage}}">
+			<hr>
+			<h1 class="profile-username">{{ finduser.username }}</h1>
+			<hr>
+			<p><i class="glyphicon glyphicon-calendar"></i> Joined On {{finduser.date}}</p>
+		</div>
+		<div class="profile-information col-xs-12 col-sm-7 col-md-8 col-lg-9 col-lg-offset-0">
+			<h2 class="profile-desc text-center">Profile Information</h2>
+			<hr>
+			<div class="profile-personal col-md-6 col-lg-6">
+				<p class="profile-name"><strong>Name:</strong> {{finduser.name}}</p>
+				<p class="profile-email"><strong>Email:</strong> {{finduser.email}}</p>
+				<p class="profile-country"><strong>Country:</strong> {{finduser.country}}</p>
+				<p class="profile-state"><strong>State/Region:</strong> {{finduser.state}}</p>
+				<p class="profile-city"><strong>City:</strong> {{finduser.city}}</p>
+			</div>
+			<div class="profile-books col-md-6 col-lg-6">
+				<p class="profile-genre"><strong>Favorite Genre:</strong> {{finduser.favgenre}}</p>
+				<p class="profile-author"><strong>Favorite Author:</strong> {{finduser.favauthor}}</p>
+				<p class="profile-book"><strong>Favorite Book:</strong> {{finduser.favbook}}</p>
+				<p class="profile-series"><strong>Favorite Series:</strong> {{finduser.favseries}}</p>
+			</div>
+		</div>
+		<div class="favorite-books col-sm-12 col-md-8 col-md-offset-4 col-lg-9 col-lg-offset-3">
+			<h2>Favorite Books:</h2>
+			<div class="col-xs-6 col-sm-3 col-md-3 col-lg-2" ng-repeat="book in user.books">
+				<div class="profile-book-wrap">
+					<a href="search/books/overview/{{book._id}}" ng-click="getInfo(book)">
+						<img ng-src="{{ book.book[0].thumbnail }}" alt="Image of {{ book.book[0].title }}">
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

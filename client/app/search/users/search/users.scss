@@ -1,0 +1,32 @@
+.user-search-wrap {
+	background: $panel;
+	border: 2px solid black;
+	border-radius: 20px;
+	.profile-search {
+		.input-group {
+			margin-top: 15px;
+			margin-bottom: 50px;
+			.searchusers {
+				border: 1px solid black;
+			}
+			.searchusers-button {
+				border: 1px solid black;
+				height: 34px;
+			}
+		}
+		.alert-danger {
+			margin-top: -20px;
+			padding: 10px;
+		}
+	}
+}
+
+.profile-wrap {
+	border: 0;
+}
+
+@media screen and (max-width: 450px) {
+	h1 {
+		font-size: 30px;
+	}
+}

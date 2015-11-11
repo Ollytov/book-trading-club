@@ -1,4 +1,8 @@
 .profile-wrap {
+	background: $panel;
+	border: 2px solid black;
+	padding: 30px;
+	border-radius: 20px;
 	.profile-name-pic {
 		.profile-image {
 			height: 254px;
@@ -24,9 +28,14 @@
 		.profile-personal {
 			border-right: 1px solid #eeeeee;
 		}
-		.favorite-books {
+	}
+	.favorite-books {
+		height: 300px;
+		.profile-book-wrap img {
+			width: 130px;
+			height: 220px;
 			border: 2px solid black;
-			height: 300px;
+			margin-bottom: 30px;
 		}
 	}
 }

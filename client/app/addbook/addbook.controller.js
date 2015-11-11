@@ -37,18 +37,11 @@ angular.module('bookTradingClubApp')
     }
 
     $scope.addBook = function() {
-    	$scope.currentBook.addedBy = $scope.getCurrentUser();
-    	$http.post('/api/users/addbook/'+$scope.getCurrentUser()._id, $scope.currentBook).then(function(response) {
-    		// console.log("Success");
-    		// console.log(response);
-    	}, function(err) {
-    		console.log(err.data);
-    	});
+    	$scope.currentBook.addedBy = $scope.getCurrentUser().username;
 
     	$http.post('/api/books/add', $scope.currentBook).then(function(response) {
             $scope.errorMessageTrue = false;
             $scope.errorMessage = '';
-    		//console.log("Success");
     		$location.path('/search/books');
     	}, function(err) {
             $scope.errorMessageTrue = true;

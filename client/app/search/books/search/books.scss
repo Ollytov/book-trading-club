@@ -1,4 +1,7 @@
 .search-wrap {
+	background: $panel;
+	border: 2px solid black;
+	border-radius: 20px;
 	.search-head {
 		h1 {
 			font-size: 40px;

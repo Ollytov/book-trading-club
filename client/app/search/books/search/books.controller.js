@@ -8,6 +8,10 @@ angular.module('bookTradingClubApp')
     	socket.syncUpdates('books', $scope.books);
     });
 
+    $scope.getInfo = function(book) {
+      console.log(book._id);
+    }
+
     $scope.deleteThing = function(book) {
       $http.delete('/api/books/' + book._id);
     };

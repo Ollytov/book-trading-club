@@ -1,5 +1,7 @@
 .signup-wrap {
 	border: 2px solid black;
+	background: $panel;
+	border-radius: 20px;
 	padding: 30px;
 	.country-pick {
 		height: 34px;
@@ -20,6 +22,8 @@
 
 .login-wrap {
 	border: 2px solid black;
+	background: $panel;
+	border-radius: 20px;
 	padding: 30px;
 	.signup-text {
 		margin-top: 10px;
