@@ -7,7 +7,8 @@ angular.module('bookTradingClubApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'angular-country-picker'
+  'angular-country-picker',
+  'flow'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

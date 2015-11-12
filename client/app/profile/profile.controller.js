@@ -7,6 +7,6 @@ angular.module('bookTradingClubApp')
 
     $http.get('/api/users/find/books/'+$scope.getCurrentUser()._id).success(function(response) {
     	$scope.books = response;
-    	console.log(response);
     });
+
   });

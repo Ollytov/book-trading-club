@@ -4,8 +4,6 @@ angular.module('bookTradingClubApp')
   .controller('SearchBooksOverviewCtrl', function ($scope, $timeout, $state, $stateParams, $location, $http, Auth) {
   	$scope.getCurrentUser = Auth.getCurrentUser;
     $scope.yourComment = function(commentname) {
-        console.log(commentname);
-        console.log($scope.getCurrentUser().username);
         if ($scope.getCurrentUser().username === commentname) {
             return true; 
         }   else {
@@ -14,6 +12,7 @@ angular.module('bookTradingClubApp')
     }
 
     $http.get('/api/books/'+$state.params.book).success(function(response) {
+        console.log(response);
     	$scope.responseBook = response.book[0];
     	$scope.fullResponse = response;
         if ($scope.fullResponse.comments.length === 0) {
@@ -21,8 +20,9 @@ angular.module('bookTradingClubApp')
         }   else {
             $scope.commentList = $scope.fullResponse.comments;
         }
-    	$scope.addedBy = $scope.responseBook.addedBy._id === $scope.getCurrentUser()._id;
+    	$scope.addedBy = $scope.responseBook.addedBy === $scope.getCurrentUser().username;
     });
+
 
     $http.get('/api/users/find/user/'+$scope.getCurrentUser().username).success(function(response) {
         for (var i = 0; i < response.books.length; i++) {
@@ -55,7 +55,6 @@ angular.module('bookTradingClubApp')
             commentText: comment
         }
         $http.post('/api/books/removecomment/'+$scope.fullResponse._id, dataSent).then(function(response) {
-            console.log(response);
         }, function(err) {
             console.log(err);
         });

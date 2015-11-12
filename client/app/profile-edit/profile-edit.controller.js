@@ -9,8 +9,6 @@ angular.module('bookTradingClubApp')
     });
 
     $scope.changeInfo = function(form) {
-    	console.log("changeInfo has been run!");
-    	console.log($scope.getCurrentUser().name);
     	$http.post('/api/users/profile-edit', form).then(function(response) {
     		$location.path('/profile');
     	}, function(err) {

@@ -6,7 +6,6 @@ var moment = require('moment');
 
 exports.addComment = function(req, res) {
   req.body.timePosted = moment().calendar();
-  console.log(req.body);
   Books.findByIdAndUpdate(req.params.id, {$push: {comments: req.body}}, function(err, data) {
         if (err) return res.status(500).send(err);
         res.status(200).send(data);
@@ -43,9 +42,6 @@ exports.create = function(req, res) {
     if(err) { return handleError(res, err); }
     if (books.length !== 0) {
       for (var i = 0; i < books.length; i++) {
-        console.log(books);
-        console.log(books[i].book);
-        console.log(books[i].book[0]);
         if (books[i].book[0].thumbnail === req.body.thumbnail) {
           return res.status(500).send('That book has already been added!');
         }
