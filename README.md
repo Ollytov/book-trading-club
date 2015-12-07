@@ -7,7 +7,7 @@ adding them to their profile page.
 While there is no actual trading occurring, users can still communicate and share their opinions on their favorite books.
 
 This application utilizes:
--HTML/CSS/Javascript
+-HTML/CSS/Javascript<br>
 -AngularJS
 -NodeJS
 -MongoDB
