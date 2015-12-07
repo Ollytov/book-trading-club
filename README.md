@@ -5,3 +5,15 @@ and then adding them to the websites MongoDB Database. Once added, users can com
 adding them to their profile page. 
 
 While there is no actual trading occurring, users can still communicate and share their opinions on their favorite books.
+
+This application utilizes:
+-HTML/CSS/Javascript
+-AngularJS
+-NodeJS
+-MongoDB
+-ExpressJS
+-PassportJS
+-SocketIO
+-MomentJS
+-jQuery
+
