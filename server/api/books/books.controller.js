@@ -5,7 +5,7 @@ var Books = require('./books.model');
 var moment = require('moment');
 
 exports.addComment = function(req, res) {
-  req.body.timePosted = moment().calendar();
+  req.body.timePosted = moment(Date.now()).format('MMMM Do YYYY');
   Books.findByIdAndUpdate(req.params.id, {$push: {comments: req.body}}, function(err, data) {
         if (err) return res.status(500).send(err);
         res.status(200).send(data);
