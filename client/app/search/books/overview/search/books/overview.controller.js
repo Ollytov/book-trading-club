@@ -12,7 +12,6 @@ angular.module('bookTradingClubApp')
     }
 
     $http.get('/api/books/'+$state.params.book).success(function(response) {
-        console.log(response);
     	$scope.responseBook = response.book[0];
     	$scope.fullResponse = response;
         if ($scope.fullResponse.comments.length === 0) {
